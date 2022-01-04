@@ -92,6 +92,28 @@ const chunk = (array, len) => {
   return null;
 };
 /**
+ * Split an array into n parts.
+ *
+ * @param  {Array} array
+ * @param  {Number} len > 0.
+ * @return {Array} - Array of arrays .
+ */
+const splitTo = (array, n) => {
+  if (Array.isArray(array) && parseInt(n) > 0) {
+    var container = [];
+    var len = array.length,
+      i = 0,
+      parts = parseInt(n),
+      size;
+    while (i < len) {
+      size = Math.ceil((len - i) / parts--);
+      container.push(array.slice(i, (i += size)));
+    }
+    return container;
+  }
+  return null;
+};
+/**
  * Get the occurrences of an array item(s) (if provided) as well as all occurrences of array elements.
  *
  * @param  {Array} array
@@ -407,11 +429,105 @@ const oneIn = (items, oneArray, ...args) => {
   }
   return null;
 };
+/**
+ * Shuffle an array (randomize).
+ *
+ * @param  {Array} arr
+ * @return  {Array} Shuffled array.
+ */
+const shuffle = (arr) => {
+  if (Array.isArray(arr)) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const r = Math.random();
+      const tmp = Math.floor(r * (i + 1));
+      [arr[tmp], arr[i]] = [arr[i], arr[tmp]];
+    }
+    return arr;
+  }
+  return null;
+};
+/**
+ * Fill an array with multiple items, each of them repeated n times,  with ability to shuffle it.
+ *
+ * @param  {Array} array (array of values).
+ * @param  {Number} n (n times).
+ * @param  {Boolean} shuffled
+ * @return {Array} Filled array with items n times that maybe shuffled.
+ */
+const filling = (array, n, shuffled) => {
+  if (
+    Array.isArray(array) &&
+    parseInt(n) > 0 &&
+    typeof shuffled === "boolean"
+  ) {
+    let arr = Array.prototype.concat.apply(
+      [],
+      array.map((el) => {
+        return Array(parseInt(n)).fill(el);
+      })
+    );
+    if (shuffled) {
+      return shuffle(arr);
+    }
+    return arr;
+  }
+  return null;
+};
+/**
+ * Arrange array by same items (keeping same order of the unque items inside array).
+ *
+ * @param  {Array} array (array of values).
+ * @return {Array} Filled array with items n times that maybe shuffled.
+ */
+const arrange = (array) => {
+  let cleanList = noDup(array);
+  let occurences = occur(array);
+  return Array.prototype.concat.apply(
+    [],
+    cleanList.map((el) => {
+      let n = occurences.filter((obj) => {
+        return obj.item == el;
+      })[0].occurrence;
+      return filling([el], n, false);
+    })
+  );
+};
+// Counts total of digits after decimals in number.
+const countDecimals = (n) => {
+  if (Math.floor(n.valueOf()) === n.valueOf()) return 0;
+  return n.toString().split(".")[1].length || 0;
+};
+/**
+ * Create array from a range of numbers with ability to skip.
+ *
+ * @param  {Number} start
+ * @param  {Number} end
+ * @param  {Number} skip
+ * @return {Array}
+ */
+const numRange = (start, end, skip = 1) => {
+  if (
+    typeof start &&
+    typeof end &&
+    typeof skip === "number" &&
+    end >= start &&
+    skip > 0
+  ) {
+    var n = parseInt((end - start) / skip) + 1;
+    var d = countDecimals(skip);
+    return new Array(n)
+      .fill()
+      .map((_, i) => parseFloat((i * skip + start).toFixed(d)));
+  }
+  return null;
+};
+
 module.exports = {
   noDup,
   getDup,
   getUniq,
   chunk,
+  splitTo,
   occur,
   arrDiff,
   diffs,
@@ -423,4 +539,8 @@ module.exports = {
   itemIn,
   allIn,
   oneIn,
+  shuffle,
+  filling,
+  arrange,
+  numRange,
 };

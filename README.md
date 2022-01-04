@@ -106,7 +106,7 @@ array.cmn([[1, 3, "white"], [3, "red", 1], ["black", 6, 4]]);
 // Output: []
 
 // Check if array is an array of arrays.
-array.isArrayOfArrays([[1, 2, 3], [], [23, "star", 12]])
+array.isArrayOfArrays([[1, 2, 3], [], [23, "star", 12]]);
 
 // Output: true
 
@@ -187,6 +187,44 @@ array.oneIn(["white", "blue", "red"], true, ["yellow", "green"], ["orange", "bla
 array.oneIn(["white", "blue", "red"], true, ["yellow", "white", "green"], ["orange", "black"], ["pink", "purple"]);
 
 // Output: true; at least one item is included in one array, which is in this case the "white".
+
+// splitTo(array, n): Split an array into n parts of non-empty arrays. Return an array of arrays. Maximum number of generated arrays is equal to the length of the initial array even n is superior to the array's length.
+
+array.splitTo([1, 3, 5, 7, 9, 11, 13, 15], 3);
+
+// Output: [[1, 3, 5], [7, 9, 11], [13, 15]]
+
+// shuffle(array): Shuffle an array (randomize).
+
+array.shuffle([3, 4, 5, 6, 7, 8]);
+
+// Output: [5, 3, 8, 7, 4, 6]
+
+// filling(array, n, shuffled): Fill an array with multiple items, each of them repeated n times,  with ability to shuffle it.
+
+array.filling([1, 2, 3], 3, false);
+
+// Output: [1, 1, 1, 2, 2, 2, 3, 3, 3]
+
+array.filling([1, 2, 3], 3, true);
+
+// Output: [3, 1, 1, 2, 3, 2, 1, 3, 2]
+
+// arrange(array): Arrange array by same items (keeping same order of the unque items inside array).
+
+array.arrange([1, 5, 3, 5, 2, 1, 1, 4, 5, 3, 3, 3, 6]);
+
+// Output: [1, 1, 1, 5, 5, 5, 3, 3, 3, 3, 2, 4, 6]
+
+// numRange(start, end, skip): Create array from a range of numbers with ability to skip.
+
+array.numRange(5, 12);
+
+// Output: [5, 6, 7, 8, 9, 10, 11, 12];
+
+array.numRange(5, 12, 2);
+
+// Output: [5, 7, 9, 11]
 ```
 
 <br>
@@ -213,25 +251,36 @@ array.oneIn(["white", "blue", "red"], true, ["yellow", "white", "green"], ["oran
 | [itemIn]            |  Check if item exists in one array at least, or in all the provided arrays.             |
 | [allIn]             |  Check if all of the items exist in one array at least, or in all the provided arrays.             |
 | [oneIn]             |  Check if one item at least from the list exist in one array at least, or in all the provided arrays. |
+| [splitTo]           |  Split an array into n parts.                                                                |
+| [shuffle]           |  Shuffle an array (randomize).                                                                                      |
+| [filling]           |  Fill an array with multiple items, each of them repeated n times, with ability to shuffle it.                                 |
+| [arrange]           |  Arrange array by same items (keeping same order of the unque items inside array).                                                                                       |
+| [numRange]          |  Create array from a range of numbers with ability to skip.                             |
+
 
 ## Methods && Parameters
 
 | Method              | Parameter(s)                                                                                         |
-| --------------      | ---------------------------------------------------------------------------------------------------  |
-| [noDup]             |  Array (required)                                                                                    |
-| [getDup]            |  Array (required)                                                                                    |
-| [getUniq]           |  Array (required)                                                                                    |
-| [occur]             |  Array (required) && item:Any (optional)                                                             |
-|                     |                                                                                                      |
-| [chunk]             |  Array (required) && len:Number (required)                                                           |
-|                     |                                                                                                      |
-| [arrDiff]           |  baseArray: Array(required) && Array of arrays or seperate arrays (required)                                                       |
-| [diffs]             |  Array of arrays or seperate arrays (required)                                                       |
-| [cmn]               |  Array of arrays or seperate arrays (required)                                                       |
-| [isArrayOfArrays]   |  Array(required)                                                                                     |
-| [isArrayOfStrings]  |  Array(required)                                                                                     |
-| [isArrayOfNumbers]  |  Array(required)                                                                                     |
-| [isArrayOfObjects]  |  Array(required)                                                                                     |
-| [itemIn]            |  item:Any(required) && oneArray:Boolean(required) && Array of arrays or seperate arrays(required)    |
-| [allIn]             |  items:Array(required) && oneArray:Boolean(required) && Array of arrays or seperate arrays(required) |
-| [oneIn]             |  items:Array(required) && oneArray:Boolean(required) && Array of arrays or seperate arrays(required) |
+| --------------      | ------------------------------------------------------------------------------------------------------- |
+| [noDup]             |  Array (required)                                                                                       |
+| [getDup]            |  Array (required)                                                                                       |
+| [getUniq]           |  Array (required)                                                                                       |
+| [occur]             |  Array (required) && item:Any (optional)                                                                |
+|                     |                                                                                                         |
+| [chunk]             |  Array (required) && len:Number (required)                                                              |
+|                     |                                                                                                         |
+| [arrDiff]           |  baseArray: Array(required) && Array of arrays or seperate arrays          (required)                                                       |
+| [diffs]             |  Array of arrays or seperate arrays (required)                                                          |
+| [cmn]               |  Array of arrays or seperate arrays (required)                                                          |
+| [isArrayOfArrays]   |  Array (required)                                                                                       |
+| [isArrayOfStrings]  |  Array (required)                                                                                       |
+| [isArrayOfNumbers]  |  Array (required)                                                                                       |
+| [isArrayOfObjects]  |  Array (required)                                                                                       |
+| [itemIn]            |  item:Any(required) && oneArray:Boolean(required) && Array of arrays or seperate arrays(required)       |
+| [allIn]             |  items:Array (required) && oneArray:Boolean (required) && Array of arrays or seperate arrays (required) |
+| [oneIn]             |  items:Array (required) && oneArray:Boolean (required) && Array of arrays or seperate arrays (required) |
+| [splitTo]           |  Array (required) && n:Number (required)                                                                |
+| [shuffle]           |  Array (required)                                                                                       |
+| [filling]           |  Array (required) && n:Number (required) && shuffled:Boolean (required)                                 |
+| [arrange]           |  Array (required)                                                                                       |
+| [numRange]          |  start:Number (required) && end:Number (required) && skip:Number (optional)                             |
