@@ -1,6 +1,6 @@
 {
   "name": "array-power",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This package includes a set of useful array methods that facilitates working with arrays, specifically the arrays that contain objects or arrays even falsy values (such as: 0, null, false, NaN...).",
   "main": "index.js",
   "author": "Elyes Hkiri",
