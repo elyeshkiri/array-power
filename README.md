@@ -7,6 +7,64 @@ This package includes a set of useful array methods that facilitates working wit
 ```
 npm install array-power
 ```
+
+## Methods && Action
+
+| Method              | Action                                                                                  |
+| --------------      | --------------------------------------------------------------------------------------- |
+| [noDup]             |  Remove duplicated items from an array.                                                 |
+| [getDup]            |  Find duplicated items in array.                                                        |
+| [getUniq]           |  Find unique items in array.                                                            |
+| [occur]             |  Get the occurrence of an array item (if provided),                                     |
+|                     |  as well as all occurrences of array items.                                             |
+| [chunk]             |  Chunks an array into arrays with length elements.                                      |
+|                     |  The last chunk may contain less than length elements.                                  |
+| [arrDiff]           |  Compare array to another arrays to find its unique items.                              |
+| [diffs]             |  Get unique items in two arrays or more without duplicates.                             |
+| [cmn]               |  Get common items in multiple arrays without duplicates.                                |
+| [isArrayOfArrays]   |  Check if array is an array of arrays.                                                  |
+| [isArrayOfStrings]  |  Check if array is an array of strings.                                                 |
+| [isArrayOfNumbers]  |  Check if array is an array of numbers.                                                 |
+| [isArrayOfObjects]  |  Check if array is an array of objects.                                                 |
+| [itemIn]            |  Check if item exists in one array at least, or in all the provided arrays.             |
+| [allIn]             |  Check if all of the items exist in one array at least, or in all the provided arrays.             |
+| [oneIn]             |  Check if one item at least from the list exist in one array at least, or in all the provided arrays. |
+| [splitTo]           |  Split an array into n parts.                                                                |
+| [shuffle]           |  Shuffle an array (randomize).                                                                                      |
+| [filling]           |  Fill an array with multiple items, each of them repeated n times, with ability to shuffle it.                                 |
+| [arrange]           |  Arrange array by same items (keeping same order of the unque items inside array).                                                                                       |
+| [numRange]          |  Create array from a range of numbers with ability to skip.                             |
+
+
+## Methods && Parameters
+
+| Method              | Parameter(s)                                                                                         |
+| --------------      | ------------------------------------------------------------------------------------------------------- |
+| [noDup]             |  Array (required)                                                                                       |
+| [getDup]            |  Array (required)                                                                                       |
+| [getUniq]           |  Array (required)                                                                                       |
+| [occur]             |  Array (required) && item:Any (optional)                                                                |
+|                     |                                                                                                         |
+| [chunk]             |  Array (required) && len:Number (required)                                                              |
+|                     |                                                                                                         |
+| [arrDiff]           |  baseArray: Array(required) && Array of arrays or seperate arrays          (required)                                                       |
+| [diffs]             |  Array of arrays or seperate arrays (required)                                                          |
+| [cmn]               |  Array of arrays or seperate arrays (required)                                                          |
+| [isArrayOfArrays]   |  Array (required)                                                                                       |
+| [isArrayOfStrings]  |  Array (required)                                                                                       |
+| [isArrayOfNumbers]  |  Array (required)                                                                                       |
+| [isArrayOfObjects]  |  Array (required)                                                                                       |
+| [itemIn]            |  item:Any(required) && oneArray:Boolean(required) && Array of arrays or seperate arrays(required)       |
+| [allIn]             |  items:Array (required) && oneArray:Boolean (required) && Array of arrays or seperate arrays (required) |
+| [oneIn]             |  items:Array (required) && oneArray:Boolean (required) && Array of arrays or seperate arrays (required) |
+| [splitTo]           |  Array (required) && n:Number (required)                                                                |
+| [shuffle]           |  Array (required)                                                                                       |
+| [filling]           |  Array (required) && n:Number (required) && shuffled:Boolean (required)                                 |
+| [arrange]           |  Array (required)                                                                                       |
+| [numRange]          |  start:Number (required) && end:Number (required) && skip:Number (optional)                             |
+
+## Examples
+
 ```javascript
 const array = require("array-power");
 
@@ -226,61 +284,3 @@ array.numRange(5, 12, 2);
 
 // Output: [5, 7, 9, 11]
 ```
-
-<br>
-<br>
-
-## Methods && Action
-
-| Method              | Action                                                                                  |
-| --------------      | --------------------------------------------------------------------------------------- |
-| [noDup]             |  Remove duplicated items from an array.                                                 |
-| [getDup]            |  Find duplicated items in array.                                                        |
-| [getUniq]           |  Find unique items in array.                                                            |
-| [occur]             |  Get the occurrence of an array item (if provided),                                     |
-|                     |  as well as all occurrences of array items.                                             |
-| [chunk]             |  Chunks an array into arrays with length elements.                                      |
-|                     |  The last chunk may contain less than length elements.                                  |
-| [arrDiff]           |  Compare array to another arrays to find its unique items.                              |
-| [diffs]             |  Get unique items in two arrays or more without duplicates.                             |
-| [cmn]               |  Get common items in multiple arrays without duplicates.                                |
-| [isArrayOfArrays]   |  Check if array is an array of arrays.                                                  |
-| [isArrayOfStrings]  |  Check if array is an array of strings.                                                 |
-| [isArrayOfNumbers]  |  Check if array is an array of numbers.                                                 |
-| [isArrayOfObjects]  |  Check if array is an array of objects.                                                 |
-| [itemIn]            |  Check if item exists in one array at least, or in all the provided arrays.             |
-| [allIn]             |  Check if all of the items exist in one array at least, or in all the provided arrays.             |
-| [oneIn]             |  Check if one item at least from the list exist in one array at least, or in all the provided arrays. |
-| [splitTo]           |  Split an array into n parts.                                                                |
-| [shuffle]           |  Shuffle an array (randomize).                                                                                      |
-| [filling]           |  Fill an array with multiple items, each of them repeated n times, with ability to shuffle it.                                 |
-| [arrange]           |  Arrange array by same items (keeping same order of the unque items inside array).                                                                                       |
-| [numRange]          |  Create array from a range of numbers with ability to skip.                             |
-
-
-## Methods && Parameters
-
-| Method              | Parameter(s)                                                                                         |
-| --------------      | ------------------------------------------------------------------------------------------------------- |
-| [noDup]             |  Array (required)                                                                                       |
-| [getDup]            |  Array (required)                                                                                       |
-| [getUniq]           |  Array (required)                                                                                       |
-| [occur]             |  Array (required) && item:Any (optional)                                                                |
-|                     |                                                                                                         |
-| [chunk]             |  Array (required) && len:Number (required)                                                              |
-|                     |                                                                                                         |
-| [arrDiff]           |  baseArray: Array(required) && Array of arrays or seperate arrays          (required)                                                       |
-| [diffs]             |  Array of arrays or seperate arrays (required)                                                          |
-| [cmn]               |  Array of arrays or seperate arrays (required)                                                          |
-| [isArrayOfArrays]   |  Array (required)                                                                                       |
-| [isArrayOfStrings]  |  Array (required)                                                                                       |
-| [isArrayOfNumbers]  |  Array (required)                                                                                       |
-| [isArrayOfObjects]  |  Array (required)                                                                                       |
-| [itemIn]            |  item:Any(required) && oneArray:Boolean(required) && Array of arrays or seperate arrays(required)       |
-| [allIn]             |  items:Array (required) && oneArray:Boolean (required) && Array of arrays or seperate arrays (required) |
-| [oneIn]             |  items:Array (required) && oneArray:Boolean (required) && Array of arrays or seperate arrays (required) |
-| [splitTo]           |  Array (required) && n:Number (required)                                                                |
-| [shuffle]           |  Array (required)                                                                                       |
-| [filling]           |  Array (required) && n:Number (required) && shuffled:Boolean (required)                                 |
-| [arrange]           |  Array (required)                                                                                       |
-| [numRange]          |  start:Number (required) && end:Number (required) && skip:Number (optional)                             |
