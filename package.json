@@ -1,6 +1,6 @@
 {
   "name": "array-power",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "This package includes a set of useful array methods that facilitates working with arrays, specifically the arrays that contain objects or arrays even falsy values (such as: 0, null, false, NaN...).",
   "main": "index.js",
   "author": "Elyes Hkiri",
@@ -16,6 +16,7 @@
     "unique",
     "includes", 
     "split",
+    "search",
     "range",
     "shuffle",
     "fill",
@@ -35,6 +36,7 @@
     "find",
     "extract",
     "get",
+    "findAll",
     "stringify",
     "intersection",
     "similarity",
@@ -57,6 +59,16 @@
     "arrays",
     "array of objects",
     "array of arrays",
-    "falsy"
+    "falsy",
+    "pop",
+    "push",
+    "unshift",
+    "shift",
+    "sort",
+    "sparse",
+    "dense",
+    "reverse",
+    "immutable",
+    "mutable"
   ]
 }

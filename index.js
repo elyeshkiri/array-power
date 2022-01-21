@@ -521,6 +521,159 @@ const numRange = (start, end, skip = 1) => {
   }
   return null;
 };
+/**
+ * Look for item indexes in array from start to end position.
+ *
+ * @param  {Array}  array
+ * @param  {Any}    item Item to look for in the array.
+ * @param  {Number} start The position from which to start searching for item in the array.
+ * @param  {Number} end The position at which the search for item in the array stops.
+ * @return {Array} Return array of indexes.
+ */
+const findAll = (array, item, start = 0, end = array.length) => {
+  if (Array.isArray(array) && item && parseInt(start) <= parseInt(end)) {
+    let arr = arrayStringify(array);
+    let val = JSON.stringify({
+      original: item,
+      value: typeof item !== "string" ? JSON.stringify(item) : item,
+      type: typeof item,
+    });
+    let firstIndex = start ? parseInt(start) : arr.indexOf(val);
+    let lastIndex = end ? parseInt(end) : arr.lastIndexOf(val);
+    let indexes = [];
+    for (var i = firstIndex; i < lastIndex + 1; i++) {
+      if (arr[i] === val) {
+        indexes.push(i);
+      }
+    }
+    return indexes;
+  }
+  return null;
+};
+/**
+ * Remove (pops) the last item of an array without changing the original array.
+ *
+ * @param  {Array} array
+ * @return {Array} Return new array without the removed item (the last one).
+ */
+const pop = (array) => {
+  if (Array.isArray(array)) {
+    return array.slice(0, -1);
+  }
+  return null;
+};
+/**
+ * Shift (remove) the first item of the array without changing the original array.
+ *
+ * @param  {Array} array
+ * @return {Array} Return new array without the removed item (the first one).
+ */
+const shift = (array) => {
+  if (Array.isArray(array)) {
+    return array.slice(1);
+  }
+  return null;
+};
+/**
+ * Add new items to the beginning of an array without changing the original array.
+ *
+ * @param  {Array} array
+ * @param  {Any} items The item(s) to add to the array. Minimum one item is required.
+ * @return {Array} Return new array with the new items added to the beginning of the original array.
+ */
+const unshift = (array, ...items) => {
+  if (Array.isArray(array)) {
+    return [...items, ...array];
+  }
+  return null;
+};
+/**
+ * Add new items to the end of an array without changing the original array.
+ *
+ * @param  {Array} array
+ * @param  {Any} items The item(s) to add to the array. Minimum one item is required.
+ * @return {Array} Return new array with the new items added to the end of the original array.
+ */
+const push = (array, ...items) => {
+  if (Array.isArray(array)) {
+    return [...array, ...items];
+  }
+  return null;
+};
+/**
+ * Add and/or remove array items without changing the original array.
+ *
+ * @param  {Array} array
+ * @param  {Number} start The position to add/remove items. Negative value defines the position from the end of the array.
+ * @param  {Number} deleteCount Number of items to be removed.
+ * @param  {Any} items New elements(s) to be added.
+ * @return {Array} new array with added or/and without the removed elements from the original array.
+ */
+const splice = (array, start, deleteCount = 0, ...items) => {
+  if (Array.isArray(array) && deleteCount >= 0) {
+    return [
+      ...array.slice(0, start),
+      ...items,
+      ...array.slice(start + deleteCount),
+    ];
+  }
+  return null;
+};
+/**
+ * Sort the array items as strings in alphabetical and ascending order without changing the original array.
+ *
+ * @param  {Array} array
+ * @param  {Function} compareFunc A function that defines a sort order. The function should return a negative, zero, or positive value, depending on the arguments.
+ * @return {Array} new array with the items sorted.
+ */
+const sort = (array, compareFunc) => {
+  if (Array.isArray(array)) {
+    return [...array].sort(compareFunc);
+  }
+  return null;
+};
+/**
+ * Reverse the order of the items in an array without changing the original array.
+ *
+ * @param  {Array} array
+ * @return {Array} return new array with the order of the elements in the original array is reversed.
+ */
+const reverse = (array) => {
+  if (Array.isArray(array)) {
+    return [...array].reverse();
+  }
+  return null;
+};
+/**
+ * Sort the array items as strings in alphabetical and ascending order, then reverse the order of the items without changing the original array.
+ *
+ * @param  {Array} array.
+ * @param  {Function} compareFunc A function that defines a sort order. The function should return a negative, zero, or positive value, depending on the arguments.
+ * @return {Array} new array with the items sorted with reversed order.
+ */
+const reverseSort = (array, compareFunc) => {
+  if (Array.isArray(array)) {
+    return [...array].sort(compareFunc).reverse();
+  }
+  return null;
+};
+/**
+ * Check whether array is dense or sparse.
+ *
+ * @param  {Array} array
+ * @return {Boolean} if true, array is dense, else is sparse.
+ */
+const isDense = (array) => {
+  if (Array.isArray(array)) {
+    for (let i = 0; i < array.length; i++) {
+      if (!(i in array)) {
+        return false;
+      }
+    }
+    return true;
+  }
+  return false;
+};
 
 module.exports = {
   noDup,
@@ -543,4 +696,14 @@ module.exports = {
   filling,
   arrange,
   numRange,
+  findAll,
+  pop,
+  shift,
+  unshift,
+  push,
+  splice,
+  sort,
+  reverse,
+  reverseSort,
+  isDense,
 };

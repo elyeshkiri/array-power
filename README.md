@@ -34,6 +34,16 @@ npm install array-power
 | [filling]           |  Fill an array with multiple items, each of them repeated n times, with ability to shuffle it.                                 |
 | [arrange]           |  Arrange array by same items (keeping same order of the unque items inside array).                                                                                       |
 | [numRange]          |  Create array from a range of numbers with ability to skip.                             |
+| [findAll]           |  Look for item indexes in array from start to end position.                                                                                       |
+| [pop]               |  Remove (pops) the last item of an array without changing the original array.                                                                                       |
+| [shift]             |  Shift (remove) the first item of the array without changing the original array.       |
+| [unshift]           |  Add new items to the beginning of an array without changing the original array. |
+| [push]              |  Add new items to the end of an array without changing the original array. |
+| [splice]            |  Add and/or remove array items without changing the original array.                                                                |
+| [sort]              |  Sort the array items as strings in alphabetical and ascending order without changing the original array.                                                                                       |
+| [reverse]           |  Reverse the order of the items in an array without changing the original array.                                 |
+| [reverseSort]       |  Sort the array items as strings in alphabetical and ascending order, then reverse the order of the items without changing the original array.                                                                                      |
+| [isDense]           |  Check whether array is dense or sparse.                             |
 
 
 ## Methods && Parameters
@@ -62,6 +72,16 @@ npm install array-power
 | [filling]           |  Array (required) && n:Number (required) && shuffled:Boolean (required)                                 |
 | [arrange]           |  Array (required)                                                                                       |
 | [numRange]          |  start:Number (required) && end:Number (required) && skip:Number (optional)                             |
+| [findAll]           |  Array (required) && item:Any (required), start:Number (optional), end:Number (optional)                                                                                      |
+| [pop]               |  Array (required)                                                                                       |
+| [shift]             |  Array (required)       |
+| [unshift]           |  Array (required) && items:Any (required) |
+| [push]              |  Array (required) && items:Any (required)|
+| [splice]            |  Array (required) && start:Number (required), deleteCount:Number (optional), items:Any (optional)                                                            |
+| [sort]              |  Array (required) && compareFunc:Function (optional)                                                                                   |
+| [reverse]           |  Array (required)                                |
+| [reverseSort]       |  Array (required) && compareFunc:Function (optional)                                                                                      |
+| [isDense]           |  Array (required)                             |
 
 ## Examples
 
@@ -283,4 +303,144 @@ array.numRange(5, 12);
 array.numRange(5, 12, 2);
 
 // Output: [5, 7, 9, 11]
+
+// findAll(array, item, start, end).
+/**
+ * Look for item indexes in array from start to end position.
+ *
+ * @param  {Array}  array
+ * @param  {Any}    item Item to look for in the array.
+ * @param  {Number} start The position from which to start searching for item in the array.
+ * @param  {Number} end The position at which the search for item in the array stops.
+ * @return {Array} Return array of indexes.
+ */
+array.findAll([2, 3, 1, 7, 4, 9, 1, 4], 1);
+
+// Output: [2, 6]
+
+array.findAll([2, 3, 1, 7, 4, 9, 1, 4], 1, 3 , 5);
+
+
+// Output: [] there is no item = 1 between the index  3 and the index 5.
+
+let exampleArray = [4, 2, 3, 1, 7];
+// pop(array).
+/**
+ * Remove (pops) the last item of an array without changing the original array.
+ *
+ * @param  {Array} array
+ * @return {Array} Return new array without the removed item (the last one).
+ */
+
+array.pop(exampleArray);
+
+// Output: [4, 2, 3 ,1]
+
+// shift(array).
+/**
+ * Shift (remove) the first item of the array without changing the original array.
+ *
+ * @param  {Array} array
+ * @return {Array} Return new array without the removed item (the first one).
+ */
+
+array.shift(exampleArray);
+
+// Output: [2, 3, 1, 7];
+
+// unshift(array, ...items).
+/**
+ * Add new items to the beginning of an array without changing the original array.
+ *
+ * @param  {Array} array
+ * @param  {Any} items The item(s) to add to the array. Minimum one item is required.
+ * @return {Array} Return new array with the new items added to the beginning of the original array.
+ */
+
+array.unshift(exampleArray, 5);
+
+// Output: [5, 4, 2, 3, 1, 7];
+
+// push(array, ...items).
+/**
+ * Add new items to the end of an array without changing the original array.
+ *
+ * @param  {Array} array
+ * @param  {Any} items The item(s) to add to the array. Minimum one item is required.
+ * @return {Array} Return new array with the new items added to the end of the original array.
+ */
+
+array.push(exampleArray, 5);
+
+// Output: [4, 2, 3, 1, 7, 5];
+
+// splice(array, start, deleteCount = 0, ...items).
+/**
+ * Add and/or remove array items without changing the original array.
+ *
+ * @param  {Array} array
+ * @param  {Number} start The position to add/remove items. Negative value defines the position from the end of the array.
+ * @param  {Number} deleteCount Number of items to be removed.
+ * @param  {Any} items New elements(s) to be added.
+ * @return {Array} new array with added or/and without the removed elements from the original array.
+ */
+
+array.splice(exampleArray, 2, 0, 5, 6);
+
+// Output: [4, 2, 5, 6, 3, 1, 7]
+
+// sort(array, compareFunc).
+/**
+ * Sort the array items as strings in alphabetical and ascending order without changing the original array.
+ *
+ * @param  {Array} array
+ * @param  {Function} compareFunc A function that defines a sort order. The function should return a negative, zero, or positive value, depending on the arguments.
+ * @return {Array} new array with the items sorted.
+ */
+
+array.sort(exampleArray);
+
+// Output: [1, 2, 3, 4, 7];
+
+// reverse(array).
+/**
+ * Reverse the order of the items in an array without changing the original array.
+ *
+ * @param  {Array} array
+ * @return {Array} return new array with the order of the elements in the original array is reversed.
+ */
+
+array.reverse(exampleArray);
+
+// Output: [7, 1, 3, 2, 4];
+
+// reverseSort(array, compareFunc).
+/**
+ * Sort the array items as strings in alphabetical and ascending order, then reverse the order of the items without changing the original array.
+ *
+ * @param  {Array} array.
+ * @param  {Function} compareFunc A function that defines a sort order. The function should return a negative, zero, or positive value, depending on the arguments.
+ * @return {Array} new array with the items sorted with reversed order.
+ */
+
+array.reverseSort(exampleArray);
+
+// Output: [7, 4, 3, 2, 1]
+
+// isDense(array).
+/**
+ * Check whether array is dense or sparse.
+ *
+ * @param  {Array} array
+ * @return {Boolean} if true, array is dense, else is sparse.
+ */
+
+array.isDense(exampleArray);
+
+//Output: true
+
+exampleArray[100] = 8;
+array.isDense(exampleArray);
+
+//Output: false array is sparse.
 ```
