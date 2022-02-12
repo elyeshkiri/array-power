@@ -83,7 +83,7 @@ npm install array-power
 | [reverse]           |  Array (required)                                |
 | [reverseSort]       |  Array (required) && compareFunc:Function (optional)                                                                                      |
 | [isDense]           |  Array (required)                             |
-| [isDense]           |  Array (required) && order:Number (optional) default: 1;  order === 0 : return array of longest strings in array; order === 1 : return first longest string in array; order === -1 return last longest string in array.                 |
+| [longStr]           |  Array (required) && order:Number (optional) default: 1;  order === 0 : return array of longest strings in array; order === 1 : return first longest string in array; order === -1 return last longest string in array.                 |
 
 ## Examples
 
