@@ -1,7 +1,7 @@
 {
   "name": "array-power",
-  "version": "1.0.3",
-  "description": "This package includes a set of useful array methods that facilitates working with arrays, specifically the arrays that contain objects or arrays even falsy values (such as: 0, null, false, NaN...).",
+  "version": "1.0.4",
+  "description": "This package includes a set of useful array methods that facilitates working with arrays, specifically the arrays that contain objects or arrays even falsy values (such as: 0, null, false, NaN...). This package is es5 supported.",
   "main": "index.js",
   "author": "Elyes Hkiri",
   "license": "MIT",
@@ -9,12 +9,17 @@
     "type": "git",
     "url": "https://github.com/elyeshkiri/array-power.git"
   },
+  "scripts": {
+    "build": "npx babel src --out-dir dist",
+    "start": "npx babel src --watch --out-dir dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "keywords": [
     "array",
     "methods",
     "functions",
     "unique",
-    "includes", 
+    "includes",
     "split",
     "search",
     "range",
@@ -32,7 +37,7 @@
     "check",
     "equal",
     "exist",
-    "exists", 
+    "exists",
     "find",
     "extract",
     "get",
@@ -70,5 +75,10 @@
     "reverse",
     "immutable",
     "mutable"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.17.0",
+    "@babel/core": "^7.17.2",
+    "@babel/preset-env": "^7.16.11"
+  }
 }

@@ -674,7 +674,39 @@ const isDense = (array) => {
   }
   return false;
 };
-
+/**
+ * get the longest sting(s) in array
+ *
+ * @param  {Array} arr
+ * @param  {Number} order define the value to be returned, 0 = array of longests string in array; 1 = return the first longest string if there are multiple strings with same length; -1 = return the last longest string if there are multiple strings with same length.
+ * @return {Array | String} the longest string(s) in array.
+ */
+const longStr = (arr, order = 1) => {
+  if (Array.isArray(arr) && arr.length > 0) {
+    let longest = "";
+    let list = [""];
+    if (![0, 1, -1].includes(order)) {
+      order = 1;
+    }
+    for (var i = 0; i < arr.length; i++) {
+      if (
+        typeof arr[i] === "string" &&
+        ((order === 1 && arr[i].length > longest.length) ||
+          ([0, -1].includes(order) && arr[i].length >= longest.length))
+      ) {
+        longest = arr[i];
+        if (order === 0 && arr[i].length >= list[0].length) {
+          list.push(arr[i]);
+          if (list[1].length > list[0].length) {
+            list.shift();
+          }
+        }
+      }
+    }
+    return order === 0 ? list : longest;
+  }
+  return null;
+};
 module.exports = {
   noDup,
   getDup,
@@ -706,4 +738,5 @@ module.exports = {
   reverse,
   reverseSort,
   isDense,
+  longStr,
 };

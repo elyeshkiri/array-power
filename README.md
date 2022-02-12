@@ -1,7 +1,7 @@
 # array-power
 
 ## Description
-This package includes a set of useful array methods that facilitates working with arrays, specifically the arrays that contain objects or arrays even falsy values (such as: 0, null, false, NaN...).
+This package includes a set of useful array methods that facilitates working with arrays, specifically the arrays that contain objects or arrays even falsy values (such as: 0, null, false, NaN...). This package is es5 supported.
 
 ## Usage
 ```
@@ -44,6 +44,7 @@ npm install array-power
 | [reverse]           |  Reverse the order of the items in an array without changing the original array.                                 |
 | [reverseSort]       |  Sort the array items as strings in alphabetical and ascending order, then reverse the order of the items without changing the original array.                                                                                      |
 | [isDense]           |  Check whether array is dense or sparse.                             |
+| [longStr]           |  Return the longest string(s) in array                            |
 
 
 ## Methods && Parameters
@@ -82,6 +83,7 @@ npm install array-power
 | [reverse]           |  Array (required)                                |
 | [reverseSort]       |  Array (required) && compareFunc:Function (optional)                                                                                      |
 | [isDense]           |  Array (required)                             |
+| [isDense]           |  Array (required) && order:Number (optional) default: 1;  order === 0 : return array of longest strings in array; order === 1 : return first longest string in array; order === -1 return last longest string in array.                 |
 
 ## Examples
 
@@ -443,4 +445,19 @@ exampleArray[100] = 8;
 array.isDense(exampleArray);
 
 //Output: false array is sparse.
+
+// longStr(arr, order);
+/**
+ * get the longest sting(s) in array
+ *
+ * @param  {Array} arr
+ * @param  {Number} order define the value to be returned, 0 = array of longests string in array; 1 = return the first longest string if there are multiple strings with same length; -1 = return the last longest string if there are multiple strings with same length.
+ * @return {Array | String} the longest string(s) in array.
+ */
+
+const randomList = ["John Doe", 1, "My name is Elyes", 25, "How are you?",  "25d", "Hello world", "foo",  "My name is Sarra", "str"]
+
+longStr(randomList, 0) // Output: [ 'My name is Elyes', 'My name is Sarra' ];
+longStr(randomList, 1) // Output: 'My name is Elyes'
+longStr(randomList, -1) // Output: 'My name is Sarra'
 ```
