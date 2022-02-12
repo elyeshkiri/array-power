@@ -457,7 +457,7 @@ array.isDense(exampleArray);
 
 const randomList = ["John Doe", 1, "My name is Elyes", 25, "How are you?",  "25d", "Hello world", "foo",  "My name is Sarra", "str"]
 
-longStr(randomList, 0) // Output: [ 'My name is Elyes', 'My name is Sarra' ];
-longStr(randomList, 1) // Output: 'My name is Elyes'
-longStr(randomList, -1) // Output: 'My name is Sarra'
+array.longStr(randomList, 0) // Output: [ 'My name is Elyes', 'My name is Sarra' ];
+array.longStr(randomList, 1) // Output: 'My name is Elyes'
+array.longStr(randomList, -1) // Output: 'My name is Sarra'
 ```
